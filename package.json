@@ -1,7 +1,7 @@
 {
-  "name": "obsidian-sample-plugin",
+  "name": "mysnippets-plugin",
   "version": "0.12.0",
-  "description": "This is a sample plugin for Obsidian (https://obsidian.md)",
+  "description": "MySnippets is a plugin that adds a status bar menu allowing the user to quickly toggle thier snippets on and off 🖌.",
   "main": "main.js",
   "scripts": {
     "dev": "rollup --config rollup.config.js -w",
