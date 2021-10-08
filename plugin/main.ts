@@ -8,23 +8,18 @@ import {
 } from "obsidian";
 
 import { addIcons } from "icons/customIcons";
+import { MySnippetsSettingTab } from "settings/settingsTab";
+import { MySnippetsSettings, DEFAULT_SETTINGS } from "settings/settingsData";
 
-interface MyPluginSettings {
-  mySetting: string;
-}
-
-const DEFAULT_SETTINGS: MyPluginSettings = {
-  mySetting: "default",
-};
-
-export default class MyPlugin extends Plugin {
-  settings: MyPluginSettings;
+export default class MySnippets extends Plugin {
+  settings: MySnippetsSettings;
   statusBarIcon: HTMLElement;
 
   async onload() {
     console.log("MySnippets v" + this.manifest.version + " loaded");
     addIcons();
     await this.loadSettings();
+    this.addSettingTab(new MySnippetsSettingTab(this.app, this));
     this.app.workspace.onLayoutReady(() => {
       setTimeout(() => {
         this.setupStatusBar();
@@ -38,7 +33,7 @@ export default class MyPlugin extends Plugin {
     this.statusBarIcon.addClass("mod-clickable");
     this.statusBarIcon.setAttribute("aria-label", "Configure MySnippets");
     this.statusBarIcon.setAttribute("aria-label-position", "top");
-    setIcon(this.statusBarIcon, "art-brush");
+    setIcon(this.statusBarIcon, "art-fill");
 
     this.registerDomEvent(this.statusBarIcon, "click", () => {
       const statusBarRect =
@@ -49,11 +44,18 @@ export default class MyPlugin extends Plugin {
         item.setTitle("Reload Snippets");
 
         const itemDom = (item as any).dom as HTMLElement;
-        itemDom.setAttribute("class", "hide-menu-item");
+        itemDom.setAttribute("style", "display: none;");
       });
 
       const menuDom = (menu as any).dom as HTMLElement;
       menuDom.addClass("MySnippets-statusbar-menu");
+
+      this.settings.aestheticStyle == true
+        ? menuDom.setAttribute(
+            "style",
+            "background-color: transparent; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"
+          )
+        : false;
 
       const customCss = (this.app as any).customCss;
       const currentSnippets = customCss.snippets;
@@ -89,8 +91,11 @@ export default class MyPlugin extends Plugin {
         .setIcon("reload-glyph")
         .setClass("MySnippetsReloadButton")
         .setTooltip("Reload Snippets")
-        .onClick(() => {
-          customCss.requestReloadCss(currentSnippets);
+        .onClick((e: any) => {
+          customCss.readCssFolders();
+
+          e.preventDefault();
+          e.stopImmediatePropagation();
         });
 
       menu.showAtPosition({
