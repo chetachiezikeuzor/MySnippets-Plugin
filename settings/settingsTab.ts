@@ -1,5 +1,6 @@
 import type MySnippets from "plugin/main";
-import { App, Setting, PluginSettingTab } from "obsidian";
+import { App, Setting, PluginSettingTab, Notice } from "obsidian";
+import Sortable from "sortablejs";
 
 export class MySnippetsSettingTab extends PluginSettingTab {
   plugin: MySnippets;
@@ -20,7 +21,7 @@ export class MySnippetsSettingTab extends PluginSettingTab {
     });
     containerEl.createEl("h2", { text: "Plugin Settings" });
     new Setting(containerEl)
-      .setName("Glass Background")
+      .setName("Glass background")
       .setDesc(
         "Choose to change the background from the secondary background color of your theme to a glass background."
       )
@@ -32,6 +33,97 @@ export class MySnippetsSettingTab extends PluginSettingTab {
             this.plugin.saveSettings();
           });
       });
+
+    new Setting(containerEl)
+      .setName("Default application")
+      .setClass("ms-setting-item")
+      .setDesc(
+        `Open your snippets with the application of your choosing. You will need the application path or command and you can separate arguments with a comma (Example (macOS): App name: Sublime | Path/Command: Sublime Text). You can add as many applications as you want, but only the starred application (first application) will be used as the default application to open your snippets. Drag and drop the items to change the order.`
+      )
+      .addText((input) => {
+        input.inputEl.addClass("ms-name");
+        input.setPlaceholder("App Name");
+      })
+      .addText((input) => {
+        input.inputEl.addClass("ms-code");
+        input.setPlaceholder("Path/Command");
+      })
+      .addText((input) => {
+        input.inputEl.addClass("ms-args");
+        input.setPlaceholder("Arguments (optional)");
+      })
+      .addButton((button) => {
+        button
+          .setClass("MSSettingsButton")
+          .setClass("MSSettingsButtonAdd")
+          .setIcon("msAdd")
+          .onClick(async () => {
+            //@ts-ignore
+            const name = document.querySelector(".ms-name").value;
+            //@ts-ignore
+            const code = document.querySelector(".ms-code").value;
+            //@ts-ignore
+            const args = document.querySelector(".ms-args").value;
+
+            if (name && code) {
+              this.plugin.settings.applications.push({
+                name,
+                code,
+                arguments: args,
+              });
+              await this.plugin.saveSettings();
+              this.display();
+            } else {
+              new Notice("Missing Name & Path/Command");
+            }
+          });
+      });
+
+    const MSApplicationsContainer = containerEl.createEl("div", {
+      cls: "MSSettingsTabsContainer",
+    });
+
+    Sortable.create(MSApplicationsContainer, {
+      animation: 500,
+      ghostClass: "sortable-ghost",
+      chosenClass: "sortable-chosen",
+      dragClass: "sortable-drag",
+      dragoverBubble: true,
+      forceFallback: true,
+      fallbackClass: "sortable-fallback",
+      easing: "cubic-bezier(1, 0, 0, 1)",
+      onSort: (command) => {
+        const arrayResult = this.plugin.settings.applications;
+        const [removed] = arrayResult.splice(command.oldIndex, 1);
+        arrayResult.splice(command.newIndex, 0, removed);
+        this.plugin.saveSettings();
+        console.log(arrayResult);
+      },
+    });
+
+    this.plugin.settings.applications.forEach((app) => {
+      new Setting(MSApplicationsContainer)
+        .setClass("MSItem")
+        .setName(app.name)
+        .setDesc(
+          `Command: ${app.code}${
+            app.arguments ? ` | Arguments: ${app.arguments}` : ""
+          }`
+        )
+        .addButton((btn) => {
+          btn
+            .setClass("MSSettingsButton")
+            .setClass("MSSettingsButtonDelete")
+            .setIcon("msDelete")
+            .setTooltip("Remove")
+            .onClick(async () => {
+              new Notice("Reload to see changes.");
+              this.plugin.settings.applications.remove(app);
+              await this.plugin.saveSettings();
+              this.display();
+            });
+        });
+    });
     const msDonationDiv = containerEl.createEl("div", {
       cls: "msDonationSection",
     });

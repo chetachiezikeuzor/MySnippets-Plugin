@@ -3,7 +3,7 @@ STATUS BAR MENU
 ----------------------------------------------------------------*/
 
 .MySnippets-statusbar-menu {
-  width: 276px;
+  width: 290px;
 }
 
 .MySnippets-statusbar-menu .menu-item-icon {
@@ -38,32 +38,135 @@ STATUS BAR MENU
 
 .MySnippets-statusbar-menu .menu-item-title {
   margin-right: 10px;
-  width: 70%;
+  width: 60%;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.MySnippetsReloadButton {
-  width: 100%;
-  margin: 0 auto;
-  padding: 3px 14px;
+.MS-OpenSnippet {
+  padding: 4px 10px;
   border-radius: 6px;
+  margin-right: 0;
+  margin-left: 8px;
+  display: flex;
+  background-color: var(--interactive-accent);
+}
+
+.MS-OpenSnippet:hover {
+  background-color: var(--interactive-accent);
+}
+
+.ms-setting-item {
+  display: block;
+}
+
+.ms-setting-item .setting-item-control {
+  justify-content: space-between;
+  margin-top: 12px;
+  align-items: normal;
+}
+
+.MySnippetsButton {
+  width: 47%;
+  padding: 3px 14px;
+  margin-right: 0;
+  border-radius: 6px;
+}
+
+.MySnippetsButton.MS-Reload,
+.MySnippetsButton.MS-Reload:hover {
+  background-color: var(--interactive-accent);
+}
+
+.MySnippetsButton.MS-Folder,
+.MySnippetsButton.MS-Folder:hover {
   background-color: var(--text-accent);
 }
 
-.MySnippetsReloadButton:hover {
-  background-color: var(--text-accent);
-}
-
-.MySnippetsReloadButton svg {
+.MySnippetsButton svg {
   width: 1.6em;
   height: 1.6em;
   display: flex;
   margin: 0 auto;
 }
 
-.MySnippets-statusbar-menu .menu-item.buttonitem button.cMenuSettingsButton {
-  margin: 0;
+.MySnippets-statusbar-menu .menu-item.buttonitem {
+  justify-self: space-between;
+}
+
+.MSSettingsButton svg {
+  width: 1.3em;
+  height: 1.3em;
+  display: flex;
+}
+
+button.MSSettingsButton {
+  padding: 4px 14px;
+  border-radius: 6px;
+  height: fit-content;
+  align-self: center;
+  margin-right: 0;
+}
+
+.modal.mod-settings
+  button:not(.mod-cta):not(.mod-warning).MSSettingsButton.MSSettingsButtonAdd,
+button:not(.mod-cta):not(.mod-warning).MsSettingsButton.MsSettingsButtonAdd {
+  background-color: var(--interactive-accent);
+}
+
+.modal.mod-settings
+  button:not(.mod-cta):not(.mod-warning).MSSettingsButton.MSSettingsButtonDelete,
+button:not(.mod-cta):not(.mod-warning).MsSettingsButton.MsSettingsButtonDelete {
+  background-color: #989cab;
+}
+
+/*----------------------------------------------------------------
+SORTABLE
+----------------------------------------------------------------*/
+
+.setting-item.MSItem:first-child .setting-item-name::after {
+  content: "★";
+  margin-left: 5px;
+  color: var(--background-modifier-accent);
+}
+
+.MSSettingsTabsContainer {
+  border-top: 1px solid var(--background-modifier-border);
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.setting-item.MSItem:first-child {
+  padding-top: 18px;
+}
+
+.MSItem {
+  cursor: grab;
+  padding: 18px 0 18px 0;
+}
+
+.sortable-fallback {
+  cursor: grabbing;
+  box-shadow: 0px 3px 32px rgb(31 38 135 / 15%);
+}
+
+.sortable-grab {
+  cursor: grabbing !important;
+}
+
+.sortable-ghost {
+  opacity: 0.4;
+  cursor: grabbing;
+}
+
+.sortable-chosen {
+  cursor: grabbing;
+  padding: 18px 0 18px 18px;
+  background-color: var(--background-primary);
+}
+
+.sortable-drag {
+  cursor: grabbing;
+  box-shadow: 0px 3px 32px rgb(31 38 135 / 15%);
 }
 
 /*----------------------------------------------------------------

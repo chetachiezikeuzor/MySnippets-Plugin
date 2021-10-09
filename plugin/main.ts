@@ -7,6 +7,17 @@ import {
   ButtonComponent,
 } from "obsidian";
 
+import open from "open";
+
+import {
+  normalizePath,
+  Notice,
+  Platform,
+  PluginSettingTab,
+  Setting,
+  TFile,
+} from "obsidian";
+
 import { addIcons } from "icons/customIcons";
 import { MySnippetsSettingTab } from "settings/settingsTab";
 import { MySnippetsSettings, DEFAULT_SETTINGS } from "settings/settingsData";
@@ -57,14 +68,19 @@ export default class MySnippets extends Plugin {
           )
         : false;
 
+      //@ts-ignore
+      var vaultPath = this.app.vault.adapter.basePath;
       const customCss = (this.app as any).customCss;
       const currentSnippets = customCss.snippets;
+      var snippetsFolder = customCss.getSnippetsFolder();
       currentSnippets.forEach((snippet: string) => {
+        var snippetPath = customCss.getSnippetPath(snippet);
         const snippetElement = new MenuItem(menu);
         snippetElement.setTitle(snippet);
 
         const snippetElementDom = (snippetElement as any).dom as HTMLElement;
         const toggleComponent = new ToggleComponent(snippetElementDom);
+        const buttonComponent = new ButtonComponent(snippetElementDom);
 
         function changeSnippet() {
           customCss.enabledSnippets.has(snippet) == true
@@ -75,6 +91,20 @@ export default class MySnippets extends Plugin {
         toggleComponent
           .setValue(customCss.enabledSnippets.has(snippet))
           .onChange(changeSnippet);
+
+        buttonComponent
+          .setIcon("ms-snippet")
+          .setClass("MS-OpenSnippet")
+          .setTooltip(`Open snippet`)
+
+          .onClick((e: any) => {
+            open(`${vaultPath}/${snippetPath}`, {
+              app: {
+                name: this.settings.applications[0].code,
+                arguments: this.settings.applications[0].arguments.split(","),
+              },
+            });
+          });
 
         const toggle = async () => {};
 
@@ -87,12 +117,22 @@ export default class MySnippets extends Plugin {
 
       const buttonItem = menuDom.createDiv({ cls: "menu-item buttonitem" });
       const addButton = new ButtonComponent(buttonItem);
+      const folderButton = new ButtonComponent(buttonItem);
       addButton
-        .setIcon("reload-glyph")
-        .setClass("MySnippetsReloadButton")
+        .setIcon("ms-reload")
+        .setClass("MySnippetsButton")
+        .setClass("MS-Reload")
         .setTooltip("Reload Snippets")
         .onClick((e: any) => {
           customCss.readCssFolders();
+        });
+      folderButton
+        .setIcon("ms-folder")
+        .setClass("MySnippetsButton")
+        .setClass("MS-Folder")
+        .setTooltip("Open Snippets Folder")
+        .onClick((e: any) => {
+          window.open(`file://${vaultPath}/${snippetsFolder}`);
         });
 
       menu.showAtPosition({
