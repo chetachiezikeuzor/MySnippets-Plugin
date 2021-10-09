@@ -8,9 +8,6 @@ export class MySnippetsSettingTab extends PluginSettingTab {
   constructor(app: App, plugin: MySnippets) {
     super(app, plugin);
     this.plugin = plugin;
-    addEventListener("cMenu-NewCommand", () => {
-      this.display();
-    });
   }
 
   display(): void {
@@ -35,8 +32,8 @@ export class MySnippetsSettingTab extends PluginSettingTab {
             this.plugin.saveSettings();
           });
       });
-    const cDonationDiv = containerEl.createEl("div", {
-      cls: "cDonationSection",
+    const msDonationDiv = containerEl.createEl("div", {
+      cls: "msDonationSection",
     });
 
     const credit = createEl("p");
@@ -46,14 +43,14 @@ export class MySnippetsSettingTab extends PluginSettingTab {
     );
     credit.appendText("Created with ❤️ by Chetachi");
     credit.setAttribute("style", "color: var(--text-muted)");
-    cDonationDiv.appendChild(donateText);
-    cDonationDiv.appendChild(
+    msDonationDiv.appendChild(donateText);
+    msDonationDiv.appendChild(
       paypalButton("https://paypal.me/chelseaezikeuzor")
     );
-    cDonationDiv.appendChild(
+    msDonationDiv.appendChild(
       buyMeACoffeeButton("https://www.buymeacoffee.com/chetachi")
     );
-    cDonationDiv.appendChild(credit);
+    msDonationDiv.appendChild(credit);
   }
 }
 

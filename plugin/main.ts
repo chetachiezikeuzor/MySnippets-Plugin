@@ -31,9 +31,9 @@ export default class MySnippets extends Plugin {
     this.statusBarIcon = this.addStatusBarItem();
     this.statusBarIcon.addClass("cMenu-statusbar-button");
     this.statusBarIcon.addClass("mod-clickable");
-    this.statusBarIcon.setAttribute("aria-label", "Configure MySnippets");
+    this.statusBarIcon.setAttribute("aria-label", "Configure Snippets");
     this.statusBarIcon.setAttribute("aria-label-position", "top");
-    setIcon(this.statusBarIcon, "art-fill");
+    setIcon(this.statusBarIcon, "pantone-line");
 
     this.registerDomEvent(this.statusBarIcon, "click", () => {
       const statusBarRect =
@@ -93,9 +93,6 @@ export default class MySnippets extends Plugin {
         .setTooltip("Reload Snippets")
         .onClick((e: any) => {
           customCss.readCssFolders();
-
-          e.preventDefault();
-          e.stopImmediatePropagation();
         });
 
       menu.showAtPosition({
