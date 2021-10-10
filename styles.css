@@ -2,12 +2,6 @@
 STATUS BAR MENU
 ----------------------------------------------------------------*/
 
-input.ms-name,
-input.ms-args,
-input.ms-code {
-  width: 30%;
-}
-
 .MySnippets-statusbar-menu {
   width: 290px;
 }
@@ -67,16 +61,6 @@ input.ms-code {
   background-color: var(--interactive-accent);
 }
 
-.ms-setting-item {
-  display: block;
-}
-
-.ms-setting-item .setting-item-control {
-  justify-content: space-between;
-  margin-top: 12px;
-  align-items: normal;
-}
-
 .MySnippetsButton {
   width: 47%;
   padding: 5px 14px;
@@ -95,22 +79,13 @@ input.ms-code {
   background-color: var(--text-accent);
 }
 
-.MySnippetsButton svg {
-  width: 1.2em;
-  height: 1.2em;
-  display: flex;
-  margin: 0 auto;
-}
-
 .MySnippets-statusbar-menu .menu-item.buttonitem {
   justify-self: space-between;
 }
 
-.MSSettingsButton svg {
-  width: 1.3em;
-  height: 1.3em;
-  display: flex;
-}
+/*----------------------------------------------------------------
+SETTINGS TAB
+----------------------------------------------------------------*/
 
 button.MSSettingsButton {
   padding: 4px 14px;
@@ -118,6 +93,28 @@ button.MSSettingsButton {
   height: fit-content;
   align-self: center;
   margin-right: 0;
+}
+
+button.MSSettingsButton svg {
+  width: 1.3em;
+  height: 1.3em;
+  display: flex;
+}
+
+input.ms-name,
+input.ms-args,
+input.ms-code {
+  width: 30%;
+}
+
+.ms-setting-item {
+  display: block;
+}
+
+.ms-setting-item .setting-item-control {
+  justify-content: space-between;
+  margin-top: 12px;
+  align-items: normal;
 }
 
 .modal.mod-settings
