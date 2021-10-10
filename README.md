@@ -31,7 +31,7 @@ Each snippet item has a toggle and a button. You can use the toggle to turn your
 
 <img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/demo2.gif" style=" box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px; ">
 
-You can also use the button to open your snippet in the application of your choosing!
+With help from @phibro 's wonderful ["Open with" plugin](https://github.com/phibr0/obsidian-open-with), you can also use the button to open your snippet in the application of your choosing!
 
 <img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/demo3.gif" style=" box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px; ">
 
