@@ -67,6 +67,13 @@ STATUS BAR MENU
   margin-right: 0;
   margin-top: 4px;
   border-radius: 6px;
+  display: flex;
+}
+
+.MySnippetsButton svg {
+  height: 1.35em;
+  margin: auto;
+  width: 1.35em;
 }
 
 .MySnippetsButton.MS-Reload,
