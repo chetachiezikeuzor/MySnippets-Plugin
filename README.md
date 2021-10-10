@@ -9,7 +9,7 @@
 
 Remember that one time, where you were trying to test out a few cool and new snippets? Oh, but you had to constantly, go back and forth between workspace and settings tab just to toggle them on and off. Been there, done that… but wait! What if you could… I dunno… have your snippets right there in front of you? What if you could toggle your snippets on and off from the comfort of your workspace? That'd be super cool, right? I know! Well, you've come to the right place!
 
-MySnippets is a plugin that adds a status bar menu, allowing the user to quickly toggle their snippets on and off 🖌. This plugin makes managing snippets a breeze with a beautiful mini menu that shows up with a click of a button!
+MySnippets is a plugin that adds a status bar menu allowing the user to quickly manage their snippets within the comfort of their workspace 🖌. This plugin makes managing snippets a breeze with a beautiful mini menu that shows up with a click of a button!
 
 ## Demo
 

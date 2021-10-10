@@ -1,7 +1,7 @@
 {
   "name": "mysnippets-plugin",
   "version": "0.12.0",
-  "description": "MySnippets is a plugin that adds a status bar menu allowing the user to quickly toggle thier snippets on and off 🖌.",
+  "description": "MySnippets is a plugin that adds a status bar menu allowing the user to quickly manage their snippets within the comfort of their workspace 🖌.",
   "main": "main.js",
   "scripts": {
     "dev": "rollup --config rollup.config.js -w",
