@@ -2,6 +2,12 @@
 STATUS BAR MENU
 ----------------------------------------------------------------*/
 
+input.ms-name,
+input.ms-args,
+input.ms-code {
+  width: 30%;
+}
+
 .MySnippets-statusbar-menu {
   width: 290px;
 }
@@ -44,12 +50,17 @@ STATUS BAR MENU
 }
 
 .MS-OpenSnippet {
-  padding: 4px 10px;
+  padding: 3px 10px;
   border-radius: 6px;
   margin-right: 0;
   margin-left: 8px;
   display: flex;
   background-color: var(--interactive-accent);
+}
+
+.MS-OpenSnippet svg {
+  height: 1.35em;
+  width: 1.35em;
 }
 
 .MS-OpenSnippet:hover {
@@ -70,6 +81,7 @@ STATUS BAR MENU
   width: 47%;
   padding: 5px 14px;
   margin-right: 0;
+  margin-top: 4px;
   border-radius: 6px;
 }
 

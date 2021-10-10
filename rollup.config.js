@@ -11,7 +11,7 @@ if you want to view the source visit the plugins github repository
 `;
 
 export default {
-  input: "plugin/main.ts",
+  input: "src/plugin/main.ts",
   output: {
     dir: ".",
     sourcemap: "inline",
