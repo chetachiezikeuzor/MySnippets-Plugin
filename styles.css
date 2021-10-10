@@ -68,7 +68,7 @@ STATUS BAR MENU
 
 .MySnippetsButton {
   width: 47%;
-  padding: 3px 14px;
+  padding: 5px 14px;
   margin-right: 0;
   border-radius: 6px;
 }
@@ -84,8 +84,8 @@ STATUS BAR MENU
 }
 
 .MySnippetsButton svg {
-  width: 1.6em;
-  height: 1.6em;
+  width: 1.2em;
+  height: 1.2em;
   display: flex;
   margin: 0 auto;
 }

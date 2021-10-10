@@ -9,15 +9,6 @@ import {
 
 import open from "open";
 
-import {
-  normalizePath,
-  Notice,
-  Platform,
-  PluginSettingTab,
-  Setting,
-  TFile,
-} from "obsidian";
-
 import { addIcons } from "icons/customIcons";
 import { MySnippetsSettingTab } from "settings/settingsTab";
 import { MySnippetsSettings, DEFAULT_SETTINGS } from "settings/settingsData";
