@@ -63,11 +63,12 @@ STATUS BAR MENU
 
 .MySnippetsButton {
   width: 47%;
-  padding: 5px 14px;
+  padding: 7px 14px;
   margin-right: 0;
   margin-top: 4px;
   border-radius: 6px;
   display: flex;
+  font-size: 12px !important;
 }
 
 .MySnippetsButton svg {
@@ -77,13 +78,10 @@ STATUS BAR MENU
 }
 
 .MySnippetsButton.MS-Reload,
-.MySnippetsButton.MS-Reload:hover {
-  background-color: var(--interactive-accent);
-}
-
+.MySnippetsButton.MS-Reload:hover,
 .MySnippetsButton.MS-Folder,
 .MySnippetsButton.MS-Folder:hover {
-  background-color: var(--text-accent);
+  background-color: var(--interactive-accent-hover);
 }
 
 .MySnippets-statusbar-menu .menu-item.buttonitem {
@@ -99,7 +97,6 @@ button.MSSettingsButton {
   border-radius: 6px;
   height: fit-content;
   align-self: center;
-  margin-right: 0;
 }
 
 button.MSSettingsButton svg {
@@ -111,7 +108,7 @@ button.MSSettingsButton svg {
 input.ms-name,
 input.ms-args,
 input.ms-code {
-  width: 30%;
+  width: 29%;
 }
 
 .ms-setting-item {

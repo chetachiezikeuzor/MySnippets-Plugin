@@ -116,7 +116,7 @@ export default class MySnippets extends Plugin {
         .setIcon("ms-reload")
         .setClass("MySnippetsButton")
         .setClass("MS-Reload")
-        .setTooltip("Reload Snippets")
+        .setTooltip("Reload snippets")
         .onClick((e: any) => {
           customCss.readCssFolders();
         });
