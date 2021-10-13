@@ -7,6 +7,8 @@ import {
   ButtonComponent,
 } from "obsidian";
 
+import { setAttributes } from "src/util/setAttributes";
+
 import open from "open";
 
 import { addIcons } from "src/icons/customIcons";
@@ -27,17 +29,20 @@ export default class MySnippets extends Plugin {
     this.addSettingTab(new MySnippetsSettingTab(this.app, this));
     this.app.workspace.onLayoutReady(() => {
       setTimeout(() => {
-        this.setupStatusBar();
+        this.setupSnippetsStatusBarIcon();
       });
     });
   }
 
-  setupStatusBar() {
+  setupSnippetsStatusBarIcon() {
     this.statusBarIcon = this.addStatusBarItem();
-    this.statusBarIcon.addClass("cMenu-statusbar-button");
+    this.statusBarIcon.addClass("MiniSettings-statusbar-button");
     this.statusBarIcon.addClass("mod-clickable");
-    this.statusBarIcon.setAttribute("aria-label", "Configure Snippets");
-    this.statusBarIcon.setAttribute("aria-label-position", "top");
+
+    setAttributes(this.statusBarIcon, {
+      "aria-label": "Configure Snippets",
+      "aria-label-position": "top",
+    });
     setIcon(this.statusBarIcon, "pantone-line");
 
     this.registerDomEvent(this.statusBarIcon, "click", () => {
@@ -46,7 +51,7 @@ export default class MySnippets extends Plugin {
       const statusBarIconRect = this.statusBarIcon.getBoundingClientRect();
 
       const menu = new Menu(this.app).addItem((item) => {
-        item.setTitle("Reload snippets");
+        item.setTitle("Snippets");
 
         const itemDom = (item as any).dom as HTMLElement;
         itemDom.setAttribute("style", "display: none;");
@@ -55,20 +60,20 @@ export default class MySnippets extends Plugin {
       const menuDom = (menu as any).dom as HTMLElement;
       menuDom.addClass("MySnippets-statusbar-menu");
 
-      this.settings.aestheticStyle == true
-        ? menuDom.setAttribute(
-            "style",
-            "background-color: transparent; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"
-          )
-        : false;
+      if (this.settings.aestheticStyle) {
+        menuDom.setAttribute(
+          "style",
+          "background-color: transparent; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"
+        );
+      }
 
       //@ts-ignore
-      var vaultPath = this.app.vault.adapter.basePath;
+      const vaultPath = this.app.vault.adapter.getBasePath();
       const customCss = (this.app as any).customCss;
       const currentSnippets = customCss.snippets;
-      var snippetsFolder = customCss.getSnippetsFolder();
+      const snippetsFolder = customCss.getSnippetsFolder();
       currentSnippets.forEach((snippet: string) => {
-        var snippetPath = customCss.getSnippetPath(snippet);
+        const snippetPath = customCss.getSnippetPath(snippet);
         const snippetElement = new MenuItem(menu);
         snippetElement.setTitle(snippet);
 
@@ -76,15 +81,14 @@ export default class MySnippets extends Plugin {
         const toggleComponent = new ToggleComponent(snippetElementDom);
         const buttonComponent = new ButtonComponent(snippetElementDom);
 
-        function changeSnippet() {
-          customCss.enabledSnippets.has(snippet) == true
-            ? customCss.setCssEnabledStatus(snippet, false)
-            : customCss.setCssEnabledStatus(snippet, true);
+        function changeSnippetStatus() {
+          const isEnabled = customCss.enabledSnippets.has(snippet);
+          customCss.setCssEnabledStatus(snippet, !isEnabled);
         }
 
         toggleComponent
           .setValue(customCss.enabledSnippets.has(snippet))
-          .onChange(changeSnippet);
+          .onChange(changeSnippetStatus);
 
         buttonComponent
           .setIcon("ms-snippet")
@@ -100,12 +104,9 @@ export default class MySnippets extends Plugin {
             });
           });
 
-        const toggle = async () => {};
-
         snippetElement.onClick((e: any) => {
           e.preventDefault();
           e.stopImmediatePropagation();
-          toggle();
         });
       });
 

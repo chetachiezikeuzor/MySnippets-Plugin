@@ -2,8 +2,16 @@
 STATUS BAR MENU
 ----------------------------------------------------------------*/
 
+.MiniSettings-statusbar-button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
 .MySnippets-statusbar-menu {
   width: 290px;
+  max-height: calc(100% - 90px);
 }
 
 .MySnippets-statusbar-menu .menu-item-icon {
@@ -39,7 +47,8 @@ STATUS BAR MENU
 .MySnippets-statusbar-menu .menu-item-title {
   margin-right: 10px;
   width: 60%;
-  overflow: hidden;
+  line-height: initial;
+  overflow-x: hidden;
   text-overflow: ellipsis;
 }
 
@@ -63,7 +72,7 @@ STATUS BAR MENU
 
 .MySnippetsButton {
   width: 47%;
-  padding: 7px 14px;
+  padding: 5px 14px;
   margin-right: 0;
   margin-top: 4px;
   border-radius: 6px;
