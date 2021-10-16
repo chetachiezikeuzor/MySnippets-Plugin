@@ -38,7 +38,6 @@ export default function snippetsMenu(
         "background-color: transparent; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"
       );
     }
-    const vaultPath = thisApp.vault.adapter.getBasePath();
     const customCss = thisApp.customCss;
     const currentSnippets = customCss.snippets;
     const snippetsFolder = customCss.getSnippetsFolder();
@@ -93,7 +92,7 @@ export default function snippetsMenu(
       .setClass("MS-Folder")
       .setTooltip("Open snippets folder")
       .onClick((e: any) => {
-        window.open(`file://${vaultPath}/${snippetsFolder}`);
+        thisApp.openWithDefaultApp(snippetsFolder);
       });
 
     menu.showAtPosition({
