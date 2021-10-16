@@ -31,17 +31,15 @@ Each snippet item has a toggle and a button. You can use the toggle to turn your
 
 <img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/demo2.gif" style=" box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px; ">
 
-With help from @phibro 's wonderful ["Open with" plugin](https://github.com/phibr0/obsidian-open-with), you can also use the button to open your snippet in the application of your choosing!
+You can also use the button to open your snippet with your default application for CSS files.
 
 <img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/demo3.gif" style=" box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px; ">
 
-Within the settings tab, you will be able to choose a default application to open your snippets. You may add as many applications as you'd like, but only one application will be used as your default. You will need to provide the application name, the application path or command, and you can separate arguments with a comma. Example (macOS): `App name: Sublime | Path/Command: Sublime Text`. To choose a default application, drag and drop the items to change the order. Your default application will be the first application in the list. It will be starred for your convenience.
+On Mac, you can change your default application by right-clicking on any CSS file, then click "Get info." Then, Go to the "Open with" section and choose the application you'd like to use. Use the "Change All..." button to set this application as your default application to open CSS files.
 
-<img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/demo1.gif" style=" box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px; ">
+<img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/getInfo.png">
 
-<img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/image4.png">
-
-<img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/image3.png">
+<img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/setDefault.png">
 
 With MySnippets, you can change the design aesthetic. You can choose to have a "glass" style for MySnippets within the settings tab, which gives it a unique and futuristic look!
 

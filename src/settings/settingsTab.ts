@@ -1,15 +1,5 @@
 import type MySnippets from "src/plugin/main";
-import {
-  App,
-  Setting,
-  PluginSettingTab,
-  Notice,
-  TextComponent,
-  ButtonComponent,
-} from "obsidian";
-import Sortable from "sortablejs";
-
-import { setAttributes } from "src/util/setAttributes";
+import { App, Setting, PluginSettingTab } from "obsidian";
 
 export class MySnippetsSettingTab extends PluginSettingTab {
   plugin: MySnippets;
@@ -42,92 +32,7 @@ export class MySnippetsSettingTab extends PluginSettingTab {
             this.plugin.saveSettings();
           });
       });
-    const SettingItem = new Setting(containerEl)
-      .setName("Default application")
-      .setClass("ms-setting-item")
-      .setDesc(
-        `Open your snippets with the application of your choosing. You will need the application path or command and you can separate arguments with a comma (Example (macOS): App name: Sublime | Path/Command: Sublime Text). You can add as many applications as you want, but only the starred application (first application) will be used as the default application to open your snippets. Drag and drop the items to change the order.`
-      );
-    const nameEl = new TextComponent(SettingItem.controlEl);
-    setAttributes(nameEl.inputEl, {
-      placeholder: "App Name",
-      class: "ms-name",
-    });
-    const codeEl = new TextComponent(SettingItem.controlEl);
-    setAttributes(codeEl.inputEl, {
-      placeholder: "Path/Command",
-      class: "ms-code",
-    });
-    const argsEl = new TextComponent(SettingItem.controlEl);
-    setAttributes(argsEl.inputEl, {
-      placeholder: "Arguments (optional)",
-      class: "ms-args",
-    });
-    const saveButton = new ButtonComponent(SettingItem.controlEl)
-      .setIcon("msSave")
-      .setClass("MSSettingsButton")
-      .setClass("MSSettingsButtonAdd")
-      .onClick(async () => {
-        const name = nameEl.inputEl.value;
-        const code = codeEl.inputEl.value;
-        const args = argsEl.inputEl.value;
 
-        if (name && code) {
-          this.plugin.settings.applications.push({
-            name,
-            code,
-            arguments: args,
-          });
-          await this.plugin.saveSettings();
-          new Notice(`${name} has been added`);
-          this.display();
-        } else {
-          new Notice("Missing name & path/command");
-        }
-      });
-
-    const MSApplicationsContainer = containerEl.createEl("div", {
-      cls: "MSSettingsTabsContainer",
-    });
-
-    Sortable.create(MSApplicationsContainer, {
-      animation: 500,
-      ghostClass: "sortable-ghost",
-      chosenClass: "sortable-chosen",
-      dragClass: "sortable-drag",
-      dragoverBubble: true,
-      forceFallback: true,
-      fallbackClass: "sortable-fallback",
-      easing: "cubic-bezier(1, 0, 0, 1)",
-      onSort: (app) => {
-        const arrayResult = this.plugin.settings.applications;
-        const [removed] = arrayResult.splice(app.oldIndex, 1);
-        arrayResult.splice(app.newIndex, 0, removed);
-        this.plugin.saveSettings();
-      },
-    });
-
-    this.plugin.settings.applications.forEach((app) => {
-      new Setting(MSApplicationsContainer)
-        .setClass("MSItem")
-        .setName(app.name)
-        .setDesc(
-          `Cmd: ${app.code}${app.arguments ? ` | Args: ${app.arguments}` : ""}`
-        )
-        .addButton((btn) => {
-          btn
-            .setClass("MSSettingsButton")
-            .setClass("MSSettingsButtonDelete")
-            .setIcon("msDelete")
-            .setTooltip("Remove")
-            .onClick(async () => {
-              new Notice(`${app.name} has been removed`);
-              this.plugin.settings.applications.remove(app);
-              await this.plugin.saveSettings();
-              this.display();
-            });
-        });
-    });
     const msDonationDiv = containerEl.createEl("div", {
       cls: "msDonationSection",
     });

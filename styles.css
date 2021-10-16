@@ -90,7 +90,7 @@ STATUS BAR MENU
 .MySnippetsButton.MS-Reload:hover,
 .MySnippetsButton.MS-Folder,
 .MySnippetsButton.MS-Folder:hover {
-  background-color: var(--interactive-accent-hover);
+  background-color: var(--interactive-accent);
 }
 
 .MySnippets-statusbar-menu .menu-item.buttonitem {
