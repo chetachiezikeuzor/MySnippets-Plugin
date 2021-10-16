@@ -63,7 +63,7 @@ This plugin is not yet available in the community plugin store. You can install 
 
 ## Checklist
 
-- [ ] Nothing yet!
+- [x] Command to open snippets menu
 
 ---
 
