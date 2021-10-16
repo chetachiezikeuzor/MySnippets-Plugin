@@ -43,9 +43,7 @@ On Mac, you can change your default application by right-clicking on any CSS fil
 
 With MySnippets, you can change the design aesthetic. You can choose to have a "glass" style for MySnippets within the settings tab, which gives it a unique and futuristic look!
 
-<img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/image5.png">
-
-<img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/image6.png">
+<img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/defaultApp.png" style=" box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px; ">
 
 ## Installation
 
