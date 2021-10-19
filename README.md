@@ -27,7 +27,7 @@ We all love hacking away at Obsidian with a bunch of different snippets, but I'm
 
 MySnippets appends a cute little status bar icon in your workspace. All you need to do is click and see all of your lovely snippets in a menu! Here, you will see two buttons to the bottom of the menu. The first is your "Reload" button and the second is your "Folder" button. Triggering "Reload" button will allow the plugin to reread your snippets folder, in case you have decided to create a new snippet or delete a snippet. Triggering the "Folder" button will open the folder that houses your snippets. These buttons mimic the functions in the settings tab.
 
-<img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/demo5.gif" style=" box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px; ">
+<img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/openFolder.gif" style=" box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px; ">
 
 Each snippet item has a toggle and a button. You can use the toggle to turn your snippet off/on.
 
