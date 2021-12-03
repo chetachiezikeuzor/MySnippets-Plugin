@@ -65,6 +65,7 @@ export default class CreateSnippetModal extends Modal {
             `${customCss.getSnippetsFolder()}/${fileName}.css`,
             fileContents
           );
+          new Notice(`"${fileName}.css" successfully created!`);
 
           if (this.plugin.settings.snippetEnabledStatus)
             customCss.setCssEnabledStatus(fileName, true);
@@ -78,7 +79,7 @@ export default class CreateSnippetModal extends Modal {
       } else new Notice("Missing name for file");
     };
     const saveButton = new ButtonComponent(contentEl)
-      .setButtonText("Create file")
+      .setButtonText("Create Snippet")
       .onClick(doAdd);
     saveButton.buttonEl.addClass("wg-button");
     fileTitleValue.inputEl.focus();

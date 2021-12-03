@@ -15,6 +15,8 @@ export default function snippetsMenu(
   plugin: MySnippetsPlugin,
   settings: MySnippetsSettings
 ) {
+  const windowX = window.innerWidth;
+  const windowY = window.innerHeight;
   const statusBarRect =
     plugin.statusBarIcon.parentElement.getBoundingClientRect();
   const statusBarIconRect = plugin.statusBarIcon.getBoundingClientRect();
@@ -106,8 +108,8 @@ export default function snippetsMenu(
       });
 
     menu.showAtPosition({
-      x: statusBarIconRect.right + 5,
-      y: statusBarRect.top - 5,
+      x: windowX - 15,
+      y: windowY - 36,
     });
   }
 }
