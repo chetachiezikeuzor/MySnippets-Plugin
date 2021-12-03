@@ -31,11 +31,11 @@ MySnippets appends a cute little status bar icon in your workspace. All you need
 
 Each snippet item has a toggle and a button. You can use the toggle to turn your snippet off/on.
 
-<img src="https://user-images.githubusercontent.com/79069364/144683696-b8c29740-94e4-48b0-b865-b2f9f6fffd61.gif" alt="open-snippet" style="box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px;">
+<img src="https://user-images.githubusercontent.com/79069364/144683712-42da2acf-97f5-4987-9e9d-65b49560b9ec.gif" alt="pick-a-snippet" style="box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px;">
 
 You can also use the button to open your snippet with your default application for CSS files.
 
-<img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/openSnippets.gif" style="box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px;">
+<img src="https://user-images.githubusercontent.com/79069364/144683696-b8c29740-94e4-48b0-b865-b2f9f6fffd61.gif" alt="open-snippet" style="box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px;">
 
 On Mac, you can change your default application by right-clicking on any CSS file, then click "Get info." Then, Go to the "Open with" section and choose the application you'd like to use. Use the "Change All..." button to set this application as your default application to open CSS files.
 
