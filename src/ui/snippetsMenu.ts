@@ -1,4 +1,4 @@
-import type MySnippets from "src/plugin/main";
+import type MySnippetsPlugin from "src/plugin/main";
 import {
   App,
   Menu,
@@ -8,10 +8,11 @@ import {
   Notice,
 } from "obsidian";
 import { MySnippetsSettings } from "src/settings/settingsData";
+import CreateSnippetModal from "src/modal/createSnippetModal";
 
 export default function snippetsMenu(
   app: App,
-  plugin: MySnippets,
+  plugin: MySnippetsPlugin,
   settings: MySnippetsSettings
 ) {
   const statusBarRect =
@@ -77,6 +78,7 @@ export default function snippetsMenu(
     const buttonItem = menuDom.createDiv({ cls: "menu-item buttonitem" });
     const reloadButton = new ButtonComponent(buttonItem);
     const folderButton = new ButtonComponent(buttonItem);
+    const addButton = new ButtonComponent(buttonItem);
     reloadButton
       .setIcon("ms-reload")
       .setClass("MySnippetsButton")
@@ -93,6 +95,14 @@ export default function snippetsMenu(
       .setTooltip("Open snippets folder")
       .onClick((e: any) => {
         thisApp.openWithDefaultApp(snippetsFolder);
+      });
+    addButton
+      .setIcon("ms-add")
+      .setClass("MySnippetsButton")
+      .setClass("MS-Folder")
+      .setTooltip("Create new snippet")
+      .onClick((e: any) => {
+        new CreateSnippetModal(app, plugin).open();
       });
 
     menu.showAtPosition({

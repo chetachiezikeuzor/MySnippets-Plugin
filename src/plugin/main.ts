@@ -7,8 +7,9 @@ import {
   MySnippetsSettings,
   DEFAULT_SETTINGS,
 } from "src/settings/settingsData";
+import CreateSnippetModal from "src/modal/createSnippetModal";
 
-export default class MySnippets extends Plugin {
+export default class MySnippetsPlugin extends Plugin {
   settings: MySnippetsSettings;
   statusBarIcon: HTMLElement;
 
@@ -45,6 +46,14 @@ export default class MySnippets extends Plugin {
       icon: `pantone-line`,
       callback: async () => {
         snippetsMenu(this.app, this, this.settings);
+      },
+    });
+    this.addCommand({
+      id: `open-snippets-create`,
+      name: `Create new CSS snippet`,
+      icon: `ms-css-file`,
+      callback: async () => {
+        new CreateSnippetModal(this.app, this).open();
       },
     });
   }

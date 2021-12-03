@@ -22,6 +22,7 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
+    "create-file": "^1.0.1",
     "open": "^8.3.0",
     "sortablejs": "^1.14.0"
   }
