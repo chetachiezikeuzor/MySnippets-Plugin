@@ -13,9 +13,9 @@ MySnippets is a plugin that adds a status bar menu allowing the user to quickly 
 
 ## Demo
 
-<img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/toggleSnippets.gif" style="box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px;">
+<img src="https://user-images.githubusercontent.com/79069364/144683712-42da2acf-97f5-4987-9e9d-65b49560b9ec.gif" alt="pick-a-snippet" style="box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px;">
 
-<img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/menuCommand.gif" style="box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px;">
+<img src="https://user-images.githubusercontent.com/79069364/144683686-b8cfd625-e864-489d-8d0b-2fc36b7bd260.gif" alt="open-menu-in-statusbar" style="box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px;">
 
 ## Ease of Use
 
@@ -27,17 +27,15 @@ We all love hacking away at Obsidian with a bunch of different snippets, but I'm
 
 MySnippets appends a cute little status bar icon in your workspace. All you need to do is click and see all of your lovely snippets in a menu! Here, you will see two buttons to the bottom of the menu. The first is your "Reload" button and the second is your "Folder" button. Triggering "Reload" button will allow the plugin to reread your snippets folder, in case you have decided to create a new snippet or delete a snippet. Triggering the "Folder" button will open the folder that houses your snippets. These buttons mimic the functions in the settings tab.
 
-<img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/openFolder.gif" style="box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px;">
+<img src="https://user-images.githubusercontent.com/79069364/144683689-e125c321-8757-4afd-956a-4227b55363bf.gif" alt="open-snippet-folder" style="box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px;">
 
 Each snippet item has a toggle and a button. You can use the toggle to turn your snippet off/on.
 
-<img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/toggleSnippets.gif" style="box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px;">
+<img src="https://user-images.githubusercontent.com/79069364/144683696-b8c29740-94e4-48b0-b865-b2f9f6fffd61.gif" alt="open-snippet" style="box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px;">
 
 You can also use the button to open your snippet with your default application for CSS files.
 
 <img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/openSnippets.gif" style="box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px;">
-
-<img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/regularMenu.png" style="box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px;">
 
 On Mac, you can change your default application by right-clicking on any CSS file, then click "Get info." Then, Go to the "Open with" section and choose the application you'd like to use. Use the "Change All..." button to set this application as your default application to open CSS files.
 
@@ -45,9 +43,9 @@ On Mac, you can change your default application by right-clicking on any CSS fil
 
 With MySnippets, you can change the design aesthetic. You can choose to have a "glass" style for MySnippets within the settings tab, which gives it a unique and futuristic look!
 
-<img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/glassMenu.png" style="box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px;">
+<img src="https://user-images.githubusercontent.com/79069364/144682628-d38979c2-c0d1-4709-8ecb-d9ab72c2cb77.png" alt="glass-menu" style="box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px;">
 
-<img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/regularMenu.png" style="box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px;">
+<img src="https://user-images.githubusercontent.com/79069364/144682602-d31beed0-ed0e-4194-a71f-faa6a05dc945.png" alt="default-menu" style="box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px;">
 
 ### Create New CSS Snippets
 
