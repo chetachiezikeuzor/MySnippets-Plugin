@@ -49,6 +49,8 @@ With MySnippets, you can change the design aesthetic. You can choose to have a "
 
 ### Create New CSS Snippets
 
+Version [1.1.0](https://github.com/chetachiezikeuzor/MySnippets-Plugin/releases/tag/1.1.0) now adds the functionality to create new CSS snippets using a modal. All you have to do is provide the name of the file and the file contents. You can also set a template for your new snippets within the settings tab. There are settings added that allow you to decide whether or not you want your new snippets to open automatically after creating them, and whether you want your snippets to be automatically toggled on after creating them.
+
 <img alt="create-css-snippet" src="https://user-images.githubusercontent.com/79069364/144666473-1d1b40d1-9336-48b8-9de6-d2ddca651f1b.gif" style="box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px;">
 
 ## Installation
@@ -59,7 +61,7 @@ This plugin is now available in the community plugin store. You can install it f
 
 ## Changelog
 
-### [1.0.4](https://github.com/chetachiezikeuzor/MySnippets-Plugin/releases/tag/1.0.4) - Dec 4, 2021
+### [1.1.0](https://github.com/chetachiezikeuzor/MySnippets-Plugin/releases/tag/1.1.0) - Dec 4, 2021
 
 ##### Added
 
