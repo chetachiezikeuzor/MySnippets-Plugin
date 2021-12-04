@@ -17,10 +17,6 @@ export default function snippetsMenu(
 ) {
   const windowX = window.innerWidth;
   const windowY = window.innerHeight;
-  const statusBarRect =
-    plugin.statusBarIcon.parentElement.getBoundingClientRect();
-  const statusBarIconRect = plugin.statusBarIcon.getBoundingClientRect();
-
   const menuExists = document.querySelector(".menu.MySnippets-statusbar-menu");
 
   if (!menuExists) {
@@ -109,7 +105,7 @@ export default function snippetsMenu(
 
     menu.showAtPosition({
       x: windowX - 15,
-      y: windowY - 36,
+      y: windowY - 37,
     });
   }
 }

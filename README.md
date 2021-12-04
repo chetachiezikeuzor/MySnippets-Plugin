@@ -5,7 +5,7 @@
 
 <img alt="mysnippets-header" src="https://user-images.githubusercontent.com/79069364/144681107-0ff0aada-b8a7-4e0e-8e2d-945b0386ee2d.png">
 
-### Status: This plugin will be available in Obsidian plugin store once it has been accepted
+### Status: This plugin is now available in Obsidian plugin store
 
 Remember that one time, where you were trying to test out a few cool and new snippets? Oh, but you had to constantly, go back and forth between workspace and settings tab just to toggle them on and off. Been there, done that… but wait! What if you could… I dunno… have your snippets right there in front of you? What if you could toggle your snippets on and off from the comfort of your workspace? That'd be super cool, right? I know! Well, you've come to the right place!
 
@@ -53,19 +53,29 @@ With MySnippets, you can change the design aesthetic. You can choose to have a "
 
 ## Installation
 
-This plugin is not yet available in the community plugin store. You can install it from there once it has been accepted. For a manual installation, you can download the necessary files and place them within your plugins folder.
+This plugin is now available in the community plugin store. You can install it from there and enable it. For a manual installation, you can download the necessary files and place them within your plugins folder.
 
 ---
 
 ## Changelog
 
-- Nothing yet!
+### [1.0.4](https://github.com/chetachiezikeuzor/MySnippets-Plugin/releases/tag/1.0.4) - Dec 4, 2021
+
+##### Added
+
+- Create new CSS snippets function
+  <img alt="create-css-snippet" src="https://user-images.githubusercontent.com/79069364/144666473-1d1b40d1-9336-48b8-9de6-d2ddca651f1b.gif" style="box-shadow: 0 2px 8px 0 var(--background-modifier-border); border-radius: 8px;">
+
+##### Fixed
+
+- MySnippets menu positioning is now dependent on window coordinates (solves issue with hidden status bar).
 
 ---
 
 ## Checklist
 
 - [x] Command to open snippets menu
+- [x] Create new CSS snippets function
 
 ---
 

@@ -9,7 +9,7 @@ import {
 } from "obsidian";
 import type MySnippetsPlugin from "../plugin/main";
 import { setAttributes } from "src/util/setAttributes";
-import { wait } from "src/util/wait";
+let fs = require("fs");
 
 export default class CreateSnippetModal extends Modal {
   path: string;
@@ -25,6 +25,7 @@ export default class CreateSnippetModal extends Modal {
   private async display(focus?: boolean) {
     const { contentEl } = this;
     const thisApp = this.app as any;
+    const customCss = thisApp.customCss;
 
     contentEl.empty();
     contentEl.setAttribute("style", "margin-top: 0px");
@@ -55,18 +56,16 @@ export default class CreateSnippetModal extends Modal {
     cssStylesValue.setValue(this.plugin.settings.stylingTemplate);
 
     const doAdd = async () => {
-      let customCss = thisApp.customCss;
       let fileName = fileTitleValue.getValue();
       let fileContents = cssStylesValue.getValue();
       let snippetPath = customCss.getSnippetPath(fileName);
       if (fileName) {
         if (!customCss.snippets.includes(fileName)) {
-          thisApp.vault.createBinary(
+          await thisApp.vault.create(
             `${customCss.getSnippetsFolder()}/${fileName}.css`,
             fileContents
           );
-          new Notice(`"${fileName}.css" successfully created!`);
-
+          console.log(`%c"${fileName}.css" has been created!`, "color: Violet");
           if (this.plugin.settings.snippetEnabledStatus)
             customCss.setCssEnabledStatus(fileName, true);
 
