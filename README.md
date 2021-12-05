@@ -92,7 +92,4 @@ Created with ❤️ by Chetachi
 <a href="https://paypal.me/chelseaezikeuzor">
 <img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/paypal.svg" height="70"></a>
 
-<br/>
-
-<a href="https://ko-fi.com/chetachi">
-<img src="https://raw.githubusercontent.com/chetachiezikeuzor/MySnippets-Plugin/master/assets/kofi.svg" height="50"></a>
+<a href='https://ko-fi.com/E1E337X8M' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi5.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
