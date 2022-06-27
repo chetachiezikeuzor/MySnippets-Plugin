@@ -10,6 +10,19 @@ import {
 import { MySnippetsSettings } from "src/settings/settingsData";
 import CreateSnippetModal from "src/modal/createSnippetModal";
 
+declare module "obsidian" {
+  interface Menu {
+      items: MenuItem[]
+  }
+
+  interface MenuItem {
+      dom: HTMLDivElement
+      titleEl: HTMLDivElement
+      handleEvent(event: Event): void
+      disabled: boolean
+  }
+}
+
 export default function snippetsMenu(
   app: App,
   plugin: MySnippetsPlugin,
@@ -43,6 +56,7 @@ export default function snippetsMenu(
     currentSnippets.forEach((snippet: string) => {
       const snippetPath = customCss.getSnippetPath(snippet);
       const snippetElement = new MenuItem(menu);
+      menu.items.push(snippetElement);
       snippetElement.setTitle(snippet);
 
       const snippetElementDom = (snippetElement as any).dom as HTMLElement;
