@@ -12,14 +12,14 @@ import CreateSnippetModal from "src/modal/createSnippetModal";
 
 declare module "obsidian" {
   interface Menu {
-      items: MenuItem[]
+    items: MenuItem[];
   }
 
   interface MenuItem {
-      dom: HTMLDivElement
-      titleEl: HTMLDivElement
-      handleEvent(event: Event): void
-      disabled: boolean
+    dom: HTMLDivElement;
+    titleEl: HTMLDivElement;
+    handleEvent(event: Event): void;
+    disabled: boolean;
   }
 }
 
@@ -53,37 +53,41 @@ export default function snippetsMenu(
     const customCss = thisApp.customCss;
     const currentSnippets = customCss.snippets;
     const snippetsFolder = customCss.getSnippetsFolder();
+
     currentSnippets.forEach((snippet: string) => {
       const snippetPath = customCss.getSnippetPath(snippet);
-      const snippetElement = new MenuItem(menu);
-      menu.items.push(snippetElement);
-      snippetElement.setTitle(snippet);
 
-      const snippetElementDom = (snippetElement as any).dom as HTMLElement;
-      const toggleComponent = new ToggleComponent(snippetElementDom);
-      const buttonComponent = new ButtonComponent(snippetElementDom);
+      menu.addItem((snippetElement) => {
+        snippetElement.setTitle(snippet);
+        menu.items.push(snippetElement);
+        snippetElement.setTitle(snippet);
 
-      function changeSnippetStatus() {
-        const isEnabled = customCss.enabledSnippets.has(snippet);
-        customCss.setCssEnabledStatus(snippet, !isEnabled);
-      }
+        const snippetElementDom = (snippetElement as any).dom as HTMLElement;
+        const toggleComponent = new ToggleComponent(snippetElementDom);
+        const buttonComponent = new ButtonComponent(snippetElementDom);
 
-      toggleComponent
-        .setValue(customCss.enabledSnippets.has(snippet))
-        .onChange(changeSnippetStatus);
+        function changeSnippetStatus() {
+          const isEnabled = customCss.enabledSnippets.has(snippet);
+          customCss.setCssEnabledStatus(snippet, !isEnabled);
+        }
 
-      buttonComponent
-        .setIcon("ms-snippet")
-        .setClass("MS-OpenSnippet")
-        .setTooltip(`Open snippet`)
+        toggleComponent
+          .setValue(customCss.enabledSnippets.has(snippet))
+          .onChange(changeSnippetStatus);
 
-        .onClick((e: any) => {
-          thisApp.openWithDefaultApp(snippetPath);
+        buttonComponent
+          .setIcon("ms-snippet")
+          .setClass("MS-OpenSnippet")
+          .setTooltip(`Open snippet`)
+
+          .onClick((e: any) => {
+            thisApp.openWithDefaultApp(snippetPath);
+          });
+
+        snippetElement.onClick((e: any) => {
+          e.preventDefault();
+          e.stopImmediatePropagation();
         });
-
-      snippetElement.onClick((e: any) => {
-        e.preventDefault();
-        e.stopImmediatePropagation();
       });
     });
 
