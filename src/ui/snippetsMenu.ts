@@ -59,8 +59,6 @@ export default function snippetsMenu(
 
       menu.addItem((snippetElement) => {
         snippetElement.setTitle(snippet);
-        menu.items.push(snippetElement);
-        snippetElement.setTitle(snippet);
 
         const snippetElementDom = (snippetElement as any).dom as HTMLElement;
         const toggleComponent = new ToggleComponent(snippetElementDom);
