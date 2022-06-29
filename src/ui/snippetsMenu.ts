@@ -12,14 +12,14 @@ import CreateSnippetModal from "src/modal/createSnippetModal";
 
 declare module "obsidian" {
   interface Menu {
-      items: MenuItem[]
+    items: MenuItem[];
   }
 
   interface MenuItem {
-      dom: HTMLDivElement
-      titleEl: HTMLDivElement
-      handleEvent(event: Event): void
-      disabled: boolean
+    dom: HTMLDivElement;
+    titleEl: HTMLDivElement;
+    handleEvent(event: Event): void;
+    disabled: boolean;
   }
 }
 
@@ -34,7 +34,7 @@ export default function snippetsMenu(
 
   if (!menuExists) {
     const thisApp = app as any;
-    const menu = new Menu().addItem((item) => {
+    const menu = new Menu(app).addItem((item) => {
       item.setTitle("Snippets");
 
       const itemDom = (item as any).dom as HTMLElement;
@@ -53,13 +53,14 @@ export default function snippetsMenu(
     const customCss = thisApp.customCss;
     const currentSnippets = customCss.snippets;
     const snippetsFolder = customCss.getSnippetsFolder();
+
     currentSnippets.forEach((snippet: string) => {
       const snippetPath = customCss.getSnippetPath(snippet);
+
       menu.addItem((snippetElement) => {
         snippetElement.setTitle(snippet);
-      const snippetElement = new MenuItem(menu);
-      menu.items.push(snippetElement);
-      snippetElement.setTitle(snippet);
+        menu.items.push(snippetElement);
+        snippetElement.setTitle(snippet);
 
         const snippetElementDom = (snippetElement as any).dom as HTMLElement;
         const toggleComponent = new ToggleComponent(snippetElementDom);
@@ -71,17 +72,17 @@ export default function snippetsMenu(
         }
 
         toggleComponent
-            .setValue(customCss.enabledSnippets.has(snippet))
-            .onChange(changeSnippetStatus);
+          .setValue(customCss.enabledSnippets.has(snippet))
+          .onChange(changeSnippetStatus);
 
         buttonComponent
-            .setIcon("ms-snippet")
-            .setClass("MS-OpenSnippet")
-            .setTooltip(`Open snippet`)
+          .setIcon("ms-snippet")
+          .setClass("MS-OpenSnippet")
+          .setTooltip(`Open snippet`)
 
-            .onClick((e: any) => {
-              thisApp.openWithDefaultApp(snippetPath);
-            });
+          .onClick((e: any) => {
+            thisApp.openWithDefaultApp(snippetPath);
+          });
 
         snippetElement.onClick((e: any) => {
           e.preventDefault();
