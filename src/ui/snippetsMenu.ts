@@ -21,7 +21,7 @@ export default function snippetsMenu(
 
   if (!menuExists) {
     const thisApp = app as any;
-    const menu = new Menu(app).addItem((item) => {
+    const menu = new Menu().addItem((item) => {
       item.setTitle("Snippets");
 
       const itemDom = (item as any).dom as HTMLElement;
@@ -42,34 +42,35 @@ export default function snippetsMenu(
     const snippetsFolder = customCss.getSnippetsFolder();
     currentSnippets.forEach((snippet: string) => {
       const snippetPath = customCss.getSnippetPath(snippet);
-      const snippetElement = new MenuItem(menu);
-      snippetElement.setTitle(snippet);
+      menu.addItem((snippetElement) => {
+        snippetElement.setTitle(snippet);
 
-      const snippetElementDom = (snippetElement as any).dom as HTMLElement;
-      const toggleComponent = new ToggleComponent(snippetElementDom);
-      const buttonComponent = new ButtonComponent(snippetElementDom);
+        const snippetElementDom = (snippetElement as any).dom as HTMLElement;
+        const toggleComponent = new ToggleComponent(snippetElementDom);
+        const buttonComponent = new ButtonComponent(snippetElementDom);
 
-      function changeSnippetStatus() {
-        const isEnabled = customCss.enabledSnippets.has(snippet);
-        customCss.setCssEnabledStatus(snippet, !isEnabled);
-      }
+        function changeSnippetStatus() {
+          const isEnabled = customCss.enabledSnippets.has(snippet);
+          customCss.setCssEnabledStatus(snippet, !isEnabled);
+        }
 
-      toggleComponent
-        .setValue(customCss.enabledSnippets.has(snippet))
-        .onChange(changeSnippetStatus);
+        toggleComponent
+            .setValue(customCss.enabledSnippets.has(snippet))
+            .onChange(changeSnippetStatus);
 
-      buttonComponent
-        .setIcon("ms-snippet")
-        .setClass("MS-OpenSnippet")
-        .setTooltip(`Open snippet`)
+        buttonComponent
+            .setIcon("ms-snippet")
+            .setClass("MS-OpenSnippet")
+            .setTooltip(`Open snippet`)
 
-        .onClick((e: any) => {
-          thisApp.openWithDefaultApp(snippetPath);
+            .onClick((e: any) => {
+              thisApp.openWithDefaultApp(snippetPath);
+            });
+
+        snippetElement.onClick((e: any) => {
+          e.preventDefault();
+          e.stopImmediatePropagation();
         });
-
-      snippetElement.onClick((e: any) => {
-        e.preventDefault();
-        e.stopImmediatePropagation();
       });
     });
 

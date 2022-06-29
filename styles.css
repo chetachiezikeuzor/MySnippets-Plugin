@@ -115,6 +115,10 @@ STATUS BAR MENU
   justify-self: space-between;
 }
 
+.menu.MySnippets-statusbar-menu {
+  overflow: auto;
+}
+
 /*----------------------------------------------------------------
 MYSNIPPETS SUPPORT
 ----------------------------------------------------------------*/
