@@ -9,7 +9,6 @@ import {
 } from "obsidian";
 import type MySnippetsPlugin from "../plugin/main";
 import { setAttributes } from "src/util/setAttributes";
-let fs = require("fs");
 
 export default class CreateSnippetModal extends Modal {
   path: string;
@@ -41,6 +40,7 @@ export default class CreateSnippetModal extends Modal {
       .setDesc("Write the title for this CSS snippet file.");
 
     const cssStylesSetting = new Setting(contentEl);
+    // avoiding having to reference this specific modal - add style in code
     cssStylesSetting.settingEl.setAttribute(
       "style",
       "display: grid; grid-template-columns: 1fr;"

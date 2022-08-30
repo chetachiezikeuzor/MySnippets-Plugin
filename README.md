@@ -5,7 +5,7 @@
 
 <img alt="mysnippets-header" src="https://user-images.githubusercontent.com/79069364/144681107-0ff0aada-b8a7-4e0e-8e2d-945b0386ee2d.png">
 
-### Status: This plugin is now available in Obsidian plugin store
+### Status: This plugin is currently available in the Obsidian plugin store
 
 Remember that one time, where you were trying to test out a few cool and new snippets? Oh, but you had to constantly, go back and forth between workspace and settings tab just to toggle them on and off. Been there, done that… but wait! What if you could… I dunno… have your snippets right there in front of you? What if you could toggle your snippets on and off from the comfort of your workspace? That'd be super cool, right? I know! Well, you've come to the right place!
 

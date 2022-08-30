@@ -14,7 +14,7 @@ export default class MySnippetsPlugin extends Plugin {
   statusBarIcon: HTMLElement;
 
   async onload() {
-    console.log("MySnippets v" + this.manifest.version + " loaded");
+    console.log(`MySnippets v${this.manifest.version} loaded`);
     addIcons();
     await this.loadSettings();
     this.addSettingTab(new MySnippetsSettingTab(this.app, this));
