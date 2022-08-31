@@ -1,5 +1,4 @@
 import {
-  App,
   Modal,
   Setting,
   TextComponent,
@@ -9,22 +8,24 @@ import {
 } from "obsidian";
 import type MySnippetsPlugin from "../plugin/main";
 import { setAttributes } from "src/util/setAttributes";
+import { EnhancedApp } from "src/settings/type";
 
 export default class CreateSnippetModal extends Modal {
   path: string;
   plugin: MySnippetsPlugin;
   mySnippetsEl: HTMLDivElement;
+  app: EnhancedApp;
 
-  constructor(app: App, plugin: MySnippetsPlugin) {
+  constructor(app: EnhancedApp, plugin: MySnippetsPlugin) {
     super(app);
+    this.app = app;
     this.plugin = plugin;
     this.onOpen = () => this.display(true);
   }
 
   private async display(focus?: boolean) {
     const { contentEl } = this;
-    const thisApp = this.app as any;
-    const customCss = thisApp.customCss;
+    const customCss = this.app.customCss;
 
     contentEl.empty();
     contentEl.setAttribute("style", "margin-top: 0px");
@@ -40,6 +41,7 @@ export default class CreateSnippetModal extends Modal {
       .setDesc("Write the title for this CSS snippet file.");
 
     const cssStylesSetting = new Setting(contentEl);
+
     // avoiding having to reference this specific modal - add style in code
     cssStylesSetting.settingEl.setAttribute(
       "style",
@@ -61,7 +63,7 @@ export default class CreateSnippetModal extends Modal {
       let snippetPath = customCss.getSnippetPath(fileName);
       if (fileName) {
         if (!customCss.snippets.includes(fileName)) {
-          await thisApp.vault.create(
+          await app.vault.create(
             `${customCss.getSnippetsFolder()}/${fileName}.css`,
             fileContents
           );
@@ -70,7 +72,7 @@ export default class CreateSnippetModal extends Modal {
             customCss.setCssEnabledStatus(fileName, true);
 
           if (this.plugin.settings.openSnippetFile)
-            thisApp.openWithDefaultApp(snippetPath);
+            this.app.openWithDefaultApp(snippetPath);
 
           customCss.readCssFolders();
           this.close();

@@ -1,32 +1,12 @@
 import type MySnippetsPlugin from "src/plugin/main";
-import {
-  App,
-  Menu,
-  MenuItem,
-  ToggleComponent,
-  ButtonComponent,
-  Notice,
-} from "obsidian";
+import { Menu, ToggleComponent, ButtonComponent, Notice } from "obsidian";
 import { setAttributes } from "src/util/setAttributes";
 import { MySnippetsSettings } from "src/settings/settingsData";
 import CreateSnippetModal from "src/modal/createSnippetModal";
-import { EnhancedMenu } from "src/settings/type";
-
-declare module "obsidian" {
-  interface Menu {
-    items: MenuItem[];
-  }
-
-  interface MenuItem {
-    dom: HTMLDivElement;
-    titleEl: HTMLDivElement;
-    handleEvent(event: Event): void;
-    disabled: boolean;
-  }
-}
+import { EnhancedApp, EnhancedMenu, EnhancedMenuItem } from "src/settings/type";
 
 export default function snippetsMenu(
-  app: App,
+  app: EnhancedApp,
   plugin: MySnippetsPlugin,
   settings: MySnippetsSettings
 ) {
@@ -35,12 +15,8 @@ export default function snippetsMenu(
   const menuExists = document.querySelector(".menu.MySnippets-statusbar-menu");
 
   if (!menuExists) {
-    // @todo
-    const thisApp = app as any;
-
     const menu = new Menu() as unknown as EnhancedMenu;
 
-    //@ts-ignore
     menu.setUseNativeMenu(false);
 
     const menuDom = (menu as any).dom as HTMLElement;
@@ -52,7 +28,7 @@ export default function snippetsMenu(
         "background-color: transparent; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"
       );
     }
-    const customCss = thisApp.customCss;
+    const customCss = app.customCss;
     const currentSnippets = customCss.snippets;
     const snippetsFolder = customCss.getSnippetsFolder();
 
@@ -81,7 +57,7 @@ export default function snippetsMenu(
           .setTooltip(`Open snippet`)
 
           .onClick((e: any) => {
-            thisApp.openWithDefaultApp(snippetPath);
+            app.openWithDefaultApp(snippetPath);
           });
 
         snippetElement.onClick((e: any) => {
@@ -93,7 +69,7 @@ export default function snippetsMenu(
 
     menu.addSeparator();
 
-    menu.addItem((actions) => {
+    menu.addItem((actions: EnhancedMenuItem) => {
       actions.setIcon(null);
       actions.setTitle("Actions");
       const actionsDom = (actions as any).dom as HTMLElement;
@@ -112,7 +88,7 @@ export default function snippetsMenu(
         .setClass("MS-Reload")
         .setTooltip("Reload snippets")
         .onClick((e: any) => {
-          customCss.readCssFolders();
+          customCss.requestLoadSnippets();
           new Notice("Snippets reloaded");
         });
       folderButton
@@ -121,7 +97,7 @@ export default function snippetsMenu(
         .setClass("MS-Folder")
         .setTooltip("Open snippets folder")
         .onClick((e: any) => {
-          thisApp.openWithDefaultApp(snippetsFolder);
+          app.openWithDefaultApp(snippetsFolder);
         });
       addButton
         .setIcon("ms-add")

@@ -8,15 +8,19 @@ import {
   DEFAULT_SETTINGS,
 } from "src/settings/settingsData";
 import CreateSnippetModal from "src/modal/createSnippetModal";
+import { EnhancedApp } from "src/settings/type";
 
 export default class MySnippetsPlugin extends Plugin {
   settings: MySnippetsSettings;
   statusBarIcon: HTMLElement;
+  app: EnhancedApp;
 
   async onload() {
     console.log(`MySnippets v${this.manifest.version} loaded`);
     addIcons();
+
     await this.loadSettings();
+
     this.addSettingTab(new MySnippetsSettingTab(this.app, this));
     this.app.workspace.onLayoutReady(() => {
       setTimeout(() => {
