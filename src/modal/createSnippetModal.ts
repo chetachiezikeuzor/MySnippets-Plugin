@@ -74,7 +74,7 @@ export default class CreateSnippetModal extends Modal {
           if (this.plugin.settings.openSnippetFile)
             this.app.openWithDefaultApp(snippetPath);
 
-          customCss.readCssFolders();
+          customCss.requestLoadSnippets();
           this.close();
         } else new Notice(`"${fileName}.css" already exists.`);
       } else new Notice("Missing name for file");
