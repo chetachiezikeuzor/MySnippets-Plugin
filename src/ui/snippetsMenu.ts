@@ -17,7 +17,7 @@ export default function snippetsMenu(
   if (!menuExists) {
     const menu = new Menu() as unknown as EnhancedMenu;
 
-    menu.setUseNativeMenu(false);
+    // menu.setUseNativeMenu(false);
 
     const menuDom = (menu as any).dom as HTMLElement;
     menuDom.addClass("MySnippets-statusbar-menu");
