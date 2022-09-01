@@ -21,7 +21,6 @@ export type EnhancedApp = App & {
     enabledSnippets: Function & { has: Function };
     setCssEnabledStatus: Function;
     requestLoadSnippets: Function;
-    readCssFolders: Function;
   };
   openWithDefaultApp: Function;
 };
